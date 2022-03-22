@@ -41,7 +41,8 @@ let package = Package(
     targets: [
         .target(
             name: "Charts",
-            resources: [.process("Resources")]
+            resources: [.process("Resources")],
+            cSettings: [.define("GLES_SILENCE_DEPRECATION")]
         ),
         .target(
             name: "ClientNetworkService",
