@@ -16,7 +16,7 @@ protocol AssetItemViewData: ViewModelProtocol, TableItemViewModelProtocol, Actio
 final class AssetItemView: UIView, ReusableView {
     private var bag = DisposeBag()
     
-    private lazy var actionButton = UIButton(type: .system)
+    private lazy var tapGesture = UITapGestureRecognizer()
     
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
@@ -43,6 +43,8 @@ final class AssetItemView: UIView, ReusableView {
     init() {
         super.init(frame: .zero)
         
+        addGestureRecognizer(tapGesture)
+        
         nameLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         symbolLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         priceLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
@@ -51,8 +53,6 @@ final class AssetItemView: UIView, ReusableView {
         stackView.spacing = 4
         
         addSubview(stackView, layout: .insets(16))
-        
-        fillWith(actionButton)
     }
     
     required init?(coder: NSCoder) {
@@ -71,8 +71,10 @@ extension AssetItemView: Renderable {
         symbolLabel.text = data.symbol
         priceLabel.text = data.price
         
-        actionButton.rx.tap
-            .subscribe(data.didSelectSubject)
+        tapGesture.rx.event
+            .bind(onNext: { _ in
+                data.didSelectSubject.onNext(())
+            })
             .disposed(by: bag)
     }
 }

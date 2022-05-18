@@ -58,12 +58,12 @@ public final class ChartIntervalView: UIView {
         action: #selector(handleControlPan(recognizer:))
     )
     
-    private var leftArrowPanRecognizer = UIPanGestureRecognizer(
+    private lazy var leftArrowPanRecognizer = UIPanGestureRecognizer(
         target: self,
         action: #selector(handleLeftArrowPan(recognizer:))
     )
     
-    private var rightArrowPanRecognizer = UIPanGestureRecognizer(
+    private lazy var rightArrowPanRecognizer = UIPanGestureRecognizer(
         target: self,
         action: #selector(handleRightArrowPan(recognizer:))
     )

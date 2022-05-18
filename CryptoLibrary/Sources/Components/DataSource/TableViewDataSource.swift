@@ -106,8 +106,13 @@ extension TableViewDataSource: UITableViewDelegate {
 }
 
 
-private extension Collection {
+private extension RandomAccessCollection {
+    /// Returns the element at the specified index if it is within bounds, otherwise nil.
+    /// - complexity: O(1)
     subscript (safe index: Index) -> Element? {
-        return indices.contains(index) ? self[index] : nil
+        guard index >= startIndex, index < endIndex else {
+            return nil
+        }
+        return self[index]
     }
 }

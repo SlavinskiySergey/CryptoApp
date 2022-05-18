@@ -7,7 +7,7 @@ import UIKit
 
 extension UIStackView {
     public func configure(with data: [ViewModelProtocol]) {
-        subviews.forEach { $0.removeFromSuperview() }
+        arrangedSubviews.forEach { $0.removeFromSuperview() }
         
         let views = data.map { $0.loadView() }
         
@@ -20,6 +20,7 @@ extension ViewModelProtocol {
         let view: UIView = view.init()
 
         if let presenting = view as? Rendering {
+            presenting.willDisplay(self)
             presenting.configureWithValue(self)
         }
         return view
