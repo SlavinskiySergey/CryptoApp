@@ -12,15 +12,22 @@ struct AssetItemViewModel: AssetItemViewData {
     let tableCell = AssetItemView.tableCell
     let view = AssetItemView.view
     
-    let didSelectSubject = PublishSubject<Void>()
+    let didSelect: Observable<Void>
+    private let didSelectSubject = PublishSubject<Void>()
     
     let name: String
     let symbol: String?
     let price: String?
     
     init(asset: Asset) {
+        self.didSelect = didSelectSubject
+        
         self.name = asset.name
         self.symbol = asset.symbol
         self.price = asset.displayPriceUsd
+    }
+    
+    func onDidSelect() {
+        didSelectSubject.onNext(())
     }
 }

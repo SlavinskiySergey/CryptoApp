@@ -13,11 +13,7 @@ public protocol ViewModelProtocol {
 public protocol AnyViewClass: UIView {}
 
 public protocol ActionableItem {
-    var didSelectSubject: PublishSubject<Void> { get }
-}
-
-extension ActionableItem {
-    public var didSelect: Observable<Void> {
-        didSelectSubject.asObservable()
-    }
+    var didSelect: Observable<Void> { get }
+    
+    func onDidSelect()
 }

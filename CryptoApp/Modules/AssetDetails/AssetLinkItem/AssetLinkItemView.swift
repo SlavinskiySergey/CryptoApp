@@ -8,8 +8,9 @@ import RxSwift
 import Components
 
 protocol AssetLinkItemViewData: ViewModelProtocol, TableItemViewModelProtocol {
-    var actionSubject: PublishSubject<Void> { get }
     var title: String { get }
+    
+    func onAction()
 }
 
 final class AssetLinkItemView: UIView, ReusableView {
@@ -36,14 +37,14 @@ final class AssetLinkItemView: UIView, ReusableView {
     }
 }
 
-// MARK: - Presentable
+// MARK: - Renderable
 extension AssetLinkItemView: Renderable {
     func configure(with data: AssetLinkItemViewData) {
         actionButton.setTitle(data.title, for: .normal)
         actionButton.setTitle(data.title, for: .highlighted)
         
         actionButton.rx.tap
-            .bind(to: data.actionSubject)
+            .bind(onNext: data.onAction)
             .disposed(by: bag)
     }
 }

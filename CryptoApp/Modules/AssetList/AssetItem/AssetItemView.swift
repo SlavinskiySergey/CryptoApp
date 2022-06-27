@@ -72,9 +72,8 @@ extension AssetItemView: Renderable {
         priceLabel.text = data.price
         
         tapGesture.rx.event
-            .bind(onNext: { _ in
-                data.didSelectSubject.onNext(())
-            })
+            .map { _ in () }
+            .bind(onNext: data.onDidSelect)
             .disposed(by: bag)
     }
 }

@@ -11,7 +11,7 @@ public struct HTMLItemViewModel: HTMLItemViewData {
     public let view = HTMLItemView.view
     
     public let didSelect: Observable<URL>
-    let didSelectSubject = PublishSubject<URL>()
+    private let didSelectSubject = PublishSubject<URL>()
     
     let aboutAttributedText: NSAttributedString
     
@@ -36,5 +36,9 @@ public struct HTMLItemViewModel: HTMLItemViewData {
         self.didSelect = didSelectSubject.asObservable()
         
         self.aboutAttributedText = formatted
+    }
+    
+    func onDidSelect(url: URL) {
+        didSelectSubject.onNext(url)
     }
 }

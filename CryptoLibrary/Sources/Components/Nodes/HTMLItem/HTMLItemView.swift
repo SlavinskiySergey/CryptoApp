@@ -7,12 +7,13 @@ import UIKit
 import RxSwift
 
 protocol HTMLItemViewData: ViewModelProtocol, TableItemViewModelProtocol {
-    var didSelectSubject: PublishSubject<URL> { get }
     var aboutAttributedText: NSAttributedString { get }
+    
+    func onDidSelect(url: URL)
 }
 
 final class HTMLItemView: UIView, ReusableView {
-    private var didSelectSubject: PublishSubject<URL>?
+    private var data: HTMLItemViewData?
     
     private lazy var textView: UITextView = {
         let textView = UITextView()
@@ -41,7 +42,7 @@ final class HTMLItemView: UIView, ReusableView {
 // MARK: - Renderable
 extension HTMLItemView: Renderable {
     func configure(with data: HTMLItemViewData) {
-        didSelectSubject = data.didSelectSubject
+        self.data = data
         textView.attributedText = data.aboutAttributedText
     }
 }
@@ -52,7 +53,7 @@ extension HTMLItemView: UITextViewDelegate {
         case .preview, .presentActions:
             return true
         case .invokeDefaultAction:
-            didSelectSubject?.onNext(URL)
+            data?.onDidSelect(url: URL)
             return false
         @unknown default:
             return false

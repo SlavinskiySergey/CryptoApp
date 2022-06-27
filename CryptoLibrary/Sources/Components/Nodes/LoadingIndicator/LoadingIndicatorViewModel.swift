@@ -10,11 +10,14 @@ public struct LoadingIndicatorViewModel: LoadingIndicatorViewData {
     public let tableCell = LoadingIndicatorView.tableCell
     public let view = LoadingIndicatorView.view
     
-    let willDisplaySubject = PublishSubject<()>()
+    public let willDisplay: Observable<()>
+    private let willDisplaySubject = PublishSubject<()>()
     
-    public var willDisplay: Observable<()> {
-        willDisplaySubject
+    public init() {
+        self.willDisplay = willDisplaySubject
     }
     
-    public init() {}
+    func onWillDisplay() {
+        willDisplaySubject.onNext(())
+    }
 }

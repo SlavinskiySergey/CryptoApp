@@ -7,7 +7,7 @@ import UIKit
 import RxSwift
 
 protocol LoadingIndicatorViewData: ViewModelProtocol, TableItemViewModelProtocol {
-    var willDisplaySubject: PublishSubject<()> { get }
+    func onWillDisplay()
 }
 
 final class LoadingIndicatorView: UIView, ReusableView, ComponentProtocol {
@@ -43,7 +43,7 @@ extension LoadingIndicatorView: Renderable {
     
     func willBeShown(with data: LoadingIndicatorViewData) {
         activityIndicator.startAnimating()
-        data.willDisplaySubject.onNext(())
+        data.onWillDisplay()
     }
     
     func wasHidden(with data: LoadingIndicatorViewData) {

@@ -41,7 +41,7 @@ final class ChartItemView: UIView, ReusableView {
     }
 }
 
-// MARK: - Presentable
+// MARK: - Renderable
 extension ChartItemView: Renderable {
     func configure(with data: ChartItemViewData) {
         chartView.setDataSet(data.dataSet)
