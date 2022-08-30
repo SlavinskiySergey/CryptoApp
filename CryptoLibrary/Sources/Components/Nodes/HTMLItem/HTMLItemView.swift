@@ -17,6 +17,8 @@ final class HTMLItemView: UIView, ReusableView {
     
     private lazy var textView: UITextView = {
         let textView = UITextView()
+        textView.textColorPalette = Palette.tintColor
+        textView.backgroundPalette = Palette.backgroundContentColor
         textView.isScrollEnabled = false
         textView.isEditable = false
         textView.delegate = self
@@ -29,6 +31,8 @@ final class HTMLItemView: UIView, ReusableView {
     init() {
         super.init(frame: .zero)
         
+        backgroundPalette = Palette.backgroundContentColor
+                
         addSubview(textView, layout: .insets(16))
     }
     

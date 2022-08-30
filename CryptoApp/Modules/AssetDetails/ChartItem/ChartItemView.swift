@@ -22,6 +22,8 @@ final class ChartItemView: UIView, ReusableView {
     init() {
         super.init(frame: .zero)
         
+        backgroundPalette = Palette.backgroundContentColor
+        
         addSubview(chartView,
                    constraints: [
                     equal(\.topAnchor),
@@ -37,8 +39,7 @@ final class ChartItemView: UIView, ReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func prepareForReuse() {
-    }
+    func prepareForReuse() {}
 }
 
 // MARK: - Renderable

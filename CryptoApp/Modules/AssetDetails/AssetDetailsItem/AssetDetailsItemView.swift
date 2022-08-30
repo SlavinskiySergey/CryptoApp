@@ -16,28 +16,28 @@ protocol AssetDetailsItemViewData: ViewModelProtocol, TableItemViewModelProtocol
 final class AssetDetailsItemView: UIView, ReusableView {
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColorPalette = Palette.tintColor
         label.font = UIFont.boldSystemFont(ofSize: 30)
         return label
     }()
     
     private lazy var symbolLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .darkGray
+        label.textColorPalette = Palette.titleColor
         label.font = UIFont.systemFont(ofSize: 20)
         return label
     }()
     
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColorPalette = Palette.tintColor
         label.font = UIFont.systemFont(ofSize: 24)
         return label
     }()
     
     private lazy var taglineLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .darkGray
+        label.textColorPalette = Palette.titleColor
         label.font = UIFont.systemFont(ofSize: 16)
         label.textAlignment = .right
         return label
@@ -45,6 +45,8 @@ final class AssetDetailsItemView: UIView, ReusableView {
         
     init() {
         super.init(frame: .zero)
+        
+        backgroundPalette = Palette.backgroundContentColor
         
         let topStackView = UIStackView(arrangedSubviews: [nameLabel, symbolLabel])
         topStackView.spacing = 8

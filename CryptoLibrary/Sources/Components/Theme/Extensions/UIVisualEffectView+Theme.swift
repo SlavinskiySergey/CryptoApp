@@ -1,6 +1,6 @@
 //
 //  UIVisualEffectView+Theme.swift
-//  Charts
+//  Components
 //
 
 import UIKit
@@ -12,7 +12,7 @@ extension UIVisualEffectView {
         }
     }
 
-    var effectPalette: Palette? {
+    public var effectPalette: Palette? {
         get {
             return palettes[effectBlock]
         }

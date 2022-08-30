@@ -33,6 +33,10 @@ public final class TableViewDataSource: NSObject, TableViewDataSourceProtocol {
         tableView.estimatedSectionFooterHeight = 120
         
         tableView.tableFooterView = UIView(frame: .zero)
+        
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
     }
 }
 

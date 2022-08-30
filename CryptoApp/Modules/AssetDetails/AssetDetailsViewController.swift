@@ -29,22 +29,34 @@ final class AssetDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         
+        applyDesign()
         applyConstraints()
+        
         viewStateSubscription()
         viewModel.viewIsReady()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: self, action: #selector(changeTheme))
+        setupRightBarButtonItem()
+    }
+    
+    private func applyDesign() {
+        view.backgroundPalette = Palette.backgroundContentColor
+        activityIndicator.colorPalette = Palette.tintColor
+        
+        tableView.backgroundPalette = Palette.backgroundPageColor
+        tableView.separatorColorPalette = Palette.separatorColor
     }
     
     private func applyConstraints() {
+        view.fillWith(tableView)
+        
         view.addSubview(
             activityIndicator,
             constraints: [
                 equal(\.centerXAnchor),
                 equal(\.centerYAnchor)
             ])
-        
-        view.fillWith(tableView)
     }
     
     private func viewStateSubscription() {
@@ -68,5 +80,18 @@ final class AssetDetailsViewController: UIViewController {
     private func dataSubscription(_ data: AssetDetailsDataProtocol) {
         dataSource.sectionViewModels = data.sections
         tableView.reloadData()
+    }
+    
+    @objc
+    private func changeTheme() {
+        ThemeSwitcher.chooseNextTheme()
+        setupRightBarButtonItem()
+        if (!(tableView.isTracking || tableView.isDragging || tableView.isDecelerating)) {
+            ThemeSwitcher.animateThemeChange()
+        }
+    }
+
+    private func setupRightBarButtonItem() {
+        navigationItem.rightBarButtonItem?.title = "\(ThemeSwitcher.nextThemeName) theme"
     }
 }

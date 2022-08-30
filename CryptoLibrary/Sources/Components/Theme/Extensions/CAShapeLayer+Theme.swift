@@ -1,6 +1,6 @@
 //
 //  CAShapeLayer+Theme.swift
-//  Charts
+//  Components
 //
 
 import UIKit
@@ -12,7 +12,7 @@ extension CAShapeLayer {
         }
     }
 
-    var fillColorPalette: Palette? {
+    public var fillColorPalette: Palette? {
         get {
             return palettes[fillColorBlock]
         }
@@ -35,7 +35,7 @@ extension CAShapeLayer {
         }
     }
 
-    var strokeColorPalette: Palette? {
+    public var strokeColorPalette: Palette? {
         get {
             return palettes[strokeColorBlock]
         }

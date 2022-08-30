@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import Components
 
 public final class FloatingLegendYRenderer: UIView, LegendYRenderer {
     public var needsRendering: Bool = false

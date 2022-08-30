@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import Components
 
 private let maxTimestampWidth: CGFloat = 40
 

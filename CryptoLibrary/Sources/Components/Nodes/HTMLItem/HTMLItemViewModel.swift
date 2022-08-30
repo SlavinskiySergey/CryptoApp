@@ -27,11 +27,8 @@ public struct HTMLItemViewModel: HTMLItemViewData {
             }
         
         let formatted = NSMutableAttributedString(attributedString: attributedString)
-        formatted.addAttributes([
-                    .font : UIFont.systemFont(ofSize: 16),
-                    .foregroundColor: UIColor.darkGray
-        ],
-                  range: NSRange.init(location: 0, length: attributedString.length))
+        formatted.addAttributes([.font : UIFont.systemFont(ofSize: 16)],
+                                range: NSRange(location: 0, length: attributedString.length))
         
         self.didSelect = didSelectSubject.asObservable()
         

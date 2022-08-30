@@ -1,6 +1,6 @@
 //
 //  UILabel+Theme.swift
-//  Charts
+//  Components
 //
 
 import UIKit
@@ -12,7 +12,7 @@ extension UILabel {
         }
     }
 
-    var textColorPalette: Palette? {
+    public var textColorPalette: Palette? {
         get {
             return palettes[textColorBlock]
         }

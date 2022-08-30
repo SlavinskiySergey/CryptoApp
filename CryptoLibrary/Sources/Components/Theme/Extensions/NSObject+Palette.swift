@@ -1,6 +1,6 @@
 //
 //  NSObject+Palette.swift
-//  Charts
+//  Components
 //
 
 import UIKit

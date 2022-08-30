@@ -5,6 +5,7 @@
 
 import UIKit
 import Module
+import Components
 
 protocol RootBuilderProtocol: BuilderProtocol {
     func build() -> RootCoordinatorProtocol
@@ -18,7 +19,9 @@ final class RootBuilder: Builder<RootDependency> {
 
 extension RootBuilder: RootBuilderProtocol {
     func build() -> RootCoordinatorProtocol {
-        let router = Router(navigationController: UINavigationController())
+        let navigationController = ThemedNavigationController()
+        navigationController.statusBarStylePalette = Palette.statusBarStyle
+        let router = Router(navigationController: navigationController)
         let component = RootComponent(dependency: dependency)
         let assetListBuilder = AssetListBuilder(dependency: component)
         return RootCoordinator(router: router, assetListBuilder: assetListBuilder)

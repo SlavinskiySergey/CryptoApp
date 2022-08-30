@@ -1,6 +1,6 @@
 //
 //  CALayer+Theme.swift
-//  Charts
+//  Components
 //
 
 import UIKit
@@ -12,7 +12,7 @@ extension CALayer {
         }
     }
 
-    var backgroundPalette: Palette? {
+    public var backgroundPalette: Palette? {
         get {
             return palettes[backgroundColorBlock]
         }

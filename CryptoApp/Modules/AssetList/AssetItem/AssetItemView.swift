@@ -20,21 +20,21 @@ final class AssetItemView: UIView, ReusableView {
     
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColorPalette = Palette.tintColor
         label.font = UIFont.systemFont(ofSize: 18)
         return label
     }()
     
     private lazy var symbolLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .darkGray
+        label.textColorPalette = Palette.titleColor
         label.font = UIFont.systemFont(ofSize: 18)
         return label
     }()
     
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColorPalette = Palette.tintColor
         label.font = UIFont.systemFont(ofSize: 18)
         label.textAlignment = .right
         return label
@@ -42,6 +42,8 @@ final class AssetItemView: UIView, ReusableView {
     
     init() {
         super.init(frame: .zero)
+        
+        backgroundPalette = Palette.backgroundContentColor
         
         addGestureRecognizer(tapGesture)
         

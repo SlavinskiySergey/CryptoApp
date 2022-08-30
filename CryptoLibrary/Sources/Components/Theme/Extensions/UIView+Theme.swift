@@ -1,6 +1,6 @@
 //
 //  UIView+Theme.swift
-//  Charts
+//  Components
 //
 
 import UIKit
@@ -12,7 +12,7 @@ extension UIView {
         }
     }
 
-    var backgroundPalette: Palette? {
+    public var backgroundPalette: Palette? {
         get {
             return palettes[backgroundColorBlock]
         }

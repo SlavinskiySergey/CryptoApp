@@ -41,6 +41,7 @@ let package = Package(
     targets: [
         .target(
             name: "Charts",
+            dependencies: ["Components"],
             resources: [.process("Resources")],
             cSettings: [.define("GLES_SILENCE_DEPRECATION")]
         ),

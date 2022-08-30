@@ -1,18 +1,19 @@
 //
-//  ThemeSelector.swift
-//  Charts
+//  ThemeSwitcher.swift
+//  Components
 //
 
 import UIKit
 
 protocol Theme {
     var name: String { get }
+    var statusBarStyle: UIStatusBarStyle { get }
     var effect: UIVisualEffect { get }
     var colors: [ColorKey: UIColor] { get }
 }
 
 
-final class ThemeSelector {
+public final class ThemeSwitcher {
     private static let themes: [Theme] = [
         LightTheme(),
         DarkTheme()
@@ -22,11 +23,11 @@ final class ThemeSelector {
         return themes[themeIndex].name
     }
 
-    static var nextThemeName: String {
+    public static var nextThemeName: String {
         return themes[nextIndex].name
     }
 
-    private(set) static var themeIndex: Int = 0
+    private(set) public static var themeIndex: Int = 0
 
     private static var nextIndex: Int {
         let nextIndex = themeIndex + 1
@@ -36,12 +37,12 @@ final class ThemeSelector {
         return nextIndex
     }
 
-    static func chooseNextTheme() {
+    public static func chooseNextTheme() {
         themeIndex = nextIndex
         NotificationCenter.default.post(name: .themeUpdateNotificationName, object: nil)
     }
 
-    static func animateThemeChange() {
+    public static func animateThemeChange() {
         guard let optionalWindow = UIApplication.shared.delegate?.window,
             let window = optionalWindow,
             let snapshot = window.snapshotView(afterScreenUpdates: false) else {
@@ -67,6 +68,10 @@ final class ThemeSelector {
     static func colorPalette(for key: ColorKey) -> Palette {
         return Palette(objects: themes.compactMap { $0.colors[key] })
     }
+    
+    static func statusBarPalette() -> Palette {
+        return Palette(objects: themes.compactMap { $0.statusBarStyle })
+    }
 
     static func effectPalette() -> Palette {
         return Palette(objects: themes.compactMap { $0.effect })
@@ -76,5 +81,5 @@ final class ThemeSelector {
 }
 
 extension NSNotification.Name {
-    static let themeUpdateNotificationName = NSNotification.Name(rawValue: "theme_update_notification_name")
+    public static let themeUpdateNotificationName = NSNotification.Name(rawValue: "theme_update_notification_name")
 }

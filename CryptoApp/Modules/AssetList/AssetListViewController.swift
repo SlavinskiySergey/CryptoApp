@@ -29,22 +29,31 @@ final class AssetListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         
+        applyDesign()
         applyConstraints()
+
         viewStateSubscription()
         viewModel.viewIsReady()
     }
     
+    private func applyDesign() {
+        view.backgroundPalette = Palette.backgroundContentColor
+        activityIndicator.colorPalette = Palette.tintColor
+        
+        tableView.backgroundPalette = Palette.backgroundPageColor
+        tableView.separatorColorPalette = Palette.separatorColor
+    }
+    
     private func applyConstraints() {
+        view.fillWith(tableView)
+        
         view.addSubview(
             activityIndicator,
             constraints: [
                 equal(\.centerXAnchor),
                 equal(\.centerYAnchor)
             ])
-        
-        view.fillWith(tableView)
     }
     
     private func viewStateSubscription() {

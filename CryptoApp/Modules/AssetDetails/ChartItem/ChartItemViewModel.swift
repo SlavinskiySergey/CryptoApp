@@ -16,7 +16,7 @@ struct ChartItemViewModel: ChartItemViewData {
         
     init(asset: Asset, chartDataSet: ChartDataSet) {
         let channel = Channel(name: asset.name,
-                              color: .blue,
+                              color: .systemBlue,
                               values: chartDataSet.values.map { CGFloat($0) })
         
         self.dataSet = DataSet(channels: [channel],

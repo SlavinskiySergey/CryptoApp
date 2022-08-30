@@ -1,6 +1,6 @@
 //
 //  UIColor+Hex.swift
-//  Charts
+//  Components
 //
 
 import UIKit

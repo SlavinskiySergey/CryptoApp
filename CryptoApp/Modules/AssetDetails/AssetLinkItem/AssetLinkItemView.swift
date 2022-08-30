@@ -25,6 +25,8 @@ final class AssetLinkItemView: UIView, ReusableView {
     init() {
         super.init(frame: .zero)
         
+        backgroundPalette = Palette.backgroundContentColor
+        
         addSubview(actionButton, layout: .insets(16))
     }
     

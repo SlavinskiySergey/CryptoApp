@@ -18,6 +18,9 @@ final class LoadingIndicatorView: UIView, ReusableView, ComponentProtocol {
     init() {
         super.init(frame: .zero)
         
+        backgroundPalette = Palette.backgroundContentColor
+        activityIndicator.colorPalette = Palette.tintColor
+        
         addSubview(
             activityIndicator,
             constraints: [

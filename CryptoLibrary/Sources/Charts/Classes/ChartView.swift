@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import Components
 
 private let legendXHeight: CGFloat = 20
 private let detailsViewOffset: CGFloat = 12
