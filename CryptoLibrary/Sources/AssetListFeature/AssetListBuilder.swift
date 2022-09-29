@@ -3,21 +3,22 @@
 //  CryptoApp
 //
 
+import AssetDetailsFeature
 import Foundation
 import Module
 
-protocol AssetListBuilderProtocol: BuilderProtocol {
+public protocol AssetListBuilderProtocol: BuilderProtocol {
     func build(router: RouterProtocol) -> AssetListCoordinatorProtocol
 }
 
-final class AssetListBuilder: Builder<AssetListDependency>  {
-    override init(dependency: AssetListDependency) {
+public final class AssetListBuilder: Builder<AssetListDependency>  {
+    public override init(dependency: AssetListDependency) {
         super.init(dependency: dependency)
     }
 }
 
 extension AssetListBuilder: AssetListBuilderProtocol {
-    func build(router: RouterProtocol) -> AssetListCoordinatorProtocol {
+    public func build(router: RouterProtocol) -> AssetListCoordinatorProtocol {
         let viewModel = AssetListViewModel(clientNetworkService: dependency.clientNetworkService)
         let assetListVC = AssetListViewController(viewModel: viewModel)
 

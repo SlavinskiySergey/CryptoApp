@@ -3,6 +3,7 @@
 //  CryptoApp
 //
 
+import AssetDetailsFeature
 import Foundation
 import ClientNetworkService
 

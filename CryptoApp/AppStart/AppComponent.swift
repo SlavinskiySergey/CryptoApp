@@ -5,6 +5,7 @@
 
 import Foundation
 import Module
+import RootFeature
 
 protocol EmptyDependency: Dependency {}
 

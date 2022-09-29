@@ -3,15 +3,16 @@
 //  CryptoApp
 //
 
+import AssetDetailsFeature
 import Foundation
 import Models
 import Module
 
-protocol AssetListCoordinatorProtocol: ViewableCoordinator {
+public protocol AssetListCoordinatorProtocol: ViewableCoordinator {
     func openDetails(asset: Asset)
 }
 
-final class AssetListCoordinator: ViewCoordinator {
+public final class AssetListCoordinator: ViewCoordinator {
     private let router: RouterProtocol
     private let assetDetailsBuilder: AssetDetailsBuilderProtocol
     
@@ -27,7 +28,7 @@ final class AssetListCoordinator: ViewCoordinator {
 }
 
 extension AssetListCoordinator: AssetListCoordinatorProtocol {    
-    func openDetails(asset: Asset) {
+    public func openDetails(asset: Asset) {
         let coordinator = assetDetailsBuilder.build(router: router, asset: asset)
         addDependency(coordinator)
         coordinator.start()

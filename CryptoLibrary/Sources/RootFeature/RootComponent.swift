@@ -3,12 +3,13 @@
 //  CryptoApp
 //
 
+import AssetListFeature
 import Foundation
 import ClientNetworkService
 import NetworkService
 import Module
 
-protocol RootDependency: Dependency {
+public protocol RootDependency: Dependency {
 }
 
 final class RootComponent: Component<RootDependency> {

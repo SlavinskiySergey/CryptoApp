@@ -3,10 +3,11 @@
 //  CryptoApp
 //
 
+import AssetListFeature
 import UIKit
 import Module
 
-protocol RootCoordinatorProtocol: ViewableCoordinator {
+public protocol RootCoordinatorProtocol: ViewableCoordinator {
     func start(window: UIWindow?)
 }
 

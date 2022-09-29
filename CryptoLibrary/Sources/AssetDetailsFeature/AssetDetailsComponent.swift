@@ -7,7 +7,7 @@ import Foundation
 import ClientNetworkService
 import Module
 
-protocol AssetDetailsDependency: Dependency {
+public protocol AssetDetailsDependency: Dependency {
     var clientNetworkService: ClientNetworkServiceAsset { get }
 }
 

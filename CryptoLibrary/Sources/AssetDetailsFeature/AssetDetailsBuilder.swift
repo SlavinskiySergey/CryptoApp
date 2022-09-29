@@ -6,19 +6,20 @@
 import Foundation
 import Models
 import Module
+import WebViewFeature
 
-protocol AssetDetailsBuilderProtocol: BuilderProtocol {
+public protocol AssetDetailsBuilderProtocol: BuilderProtocol {
     func build(router: RouterProtocol, asset: Asset) -> AssetDetailsCoordinatorProtocol
 }
 
-final class AssetDetailsBuilder: Builder<AssetDetailsDependency>  {
-    override init(dependency: AssetDetailsDependency) {
+public final class AssetDetailsBuilder: Builder<AssetDetailsDependency>  {
+    public override init(dependency: AssetDetailsDependency) {
         super.init(dependency: dependency)
     }
 }
 
 extension AssetDetailsBuilder: AssetDetailsBuilderProtocol {
-    func build(router: RouterProtocol, asset: Asset) -> AssetDetailsCoordinatorProtocol {
+    public func build(router: RouterProtocol, asset: Asset) -> AssetDetailsCoordinatorProtocol {
         let viewModel = AssetDetailsViewModel(asset: asset, clientNetworkService: dependency.clientNetworkService)
         let assetDetailsVC = AssetDetailsViewController(viewModel: viewModel)
         

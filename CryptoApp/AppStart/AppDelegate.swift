@@ -5,6 +5,7 @@
 
 import UIKit
 import Components
+import RootFeature
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

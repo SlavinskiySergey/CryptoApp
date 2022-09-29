@@ -7,10 +7,10 @@ import Foundation
 import SafariServices
 import Module
 
-protocol WebViewCoordinatorProtocol: ViewableCoordinator {
+public protocol WebViewCoordinatorProtocol: ViewableCoordinator {
 }
 
-final class WebViewCoordinator: BaseCoordinator {
+public final class WebViewCoordinator: BaseCoordinator {
     private let presentable: Presentable
     
     init(url: URL) {
@@ -20,7 +20,7 @@ final class WebViewCoordinator: BaseCoordinator {
 }
 
 extension WebViewCoordinator: WebViewCoordinatorProtocol {
-    var viewController: UIViewController {
+    public var viewController: UIViewController {
         presentable.viewController
     }
 }

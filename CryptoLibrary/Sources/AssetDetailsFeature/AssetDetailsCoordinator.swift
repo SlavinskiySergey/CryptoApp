@@ -5,8 +5,9 @@
 
 import Foundation
 import Module
+import WebViewFeature
 
-protocol AssetDetailsCoordinatorProtocol: ViewableCoordinator {
+public protocol AssetDetailsCoordinatorProtocol: ViewableCoordinator {
     func openWebView(url: URL)
 }
 

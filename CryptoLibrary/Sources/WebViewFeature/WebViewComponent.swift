@@ -6,7 +6,7 @@
 import Foundation
 import Module
 
-protocol WebViewDependency: Dependency {}
+public protocol WebViewDependency: Dependency {}
 
 final class WebViewComponent: Component<WebViewDependency> {
     override init(dependency: WebViewDependency) {
